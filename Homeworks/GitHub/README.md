@@ -7,8 +7,8 @@ A decentralized auction platform that allows users to create, bid on, and finali
 ## Functionality
 The "AuctionPlatform" contract has the following functionalities:
 
-createAuction: A function to create a new auction with a unique identifier, start time, duration, and item details (name, description, and starting price). It emits the appropriate event for auction creation.
-placeBid: A function to place a bid on an auction, which check if the bid is higher than the current highest bid for the specified auction. It emits the appropriate event for bid placement.
-finalizeBid: A function to finalize the auction that can be called by anyone. This function checks if the auction has ended, and if so, it transfers the winning bid amount to the auction's creator and set the auction as finalized. It transfers the winning bid amount to the creator only in case it is bigger than 0.
-withdraw: A function for users to withdraw their available funds when they have been outbid or when the auction has ended without their bid being the highest.
-onlyActiveAuction: A custom modifier to check if the auction is still active.
+1. createAuction: A function to create a new auction with a unique identifier, start time, duration, and item details (name, description, and starting price). It emits the appropriate event for auction creation.
+2. placeBid: A function to place a bid on an auction, which check if the bid is higher than the current highest bid for the specified auction. It emits the appropriate event for bid placement.
+3. finalizeAuction: A function to finalize the auction that can be called by anyone. This function checks if the auction has ended, and if so, it transfers the winning bid amount to the auction's creator and set the auction as finalized. It transfers the winning bid amount to the creator only in case it is bigger than 0.
+4. withdraw: A function for users to withdraw their available funds when they have been outbid or when the auction has ended without their bid being the highest.
+5. onlyActiveAuction: A custom modifier to check if the auction is still active.

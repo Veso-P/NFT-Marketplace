@@ -102,6 +102,31 @@ contract AuctionPlatform {
     
     }
 
+    // (3) A function used to finalize the auction that can be called by anyone.
+    function finalizeAuction (uint256 auctionId) external payable {
+        
+        require(
+            block.timestamp > auctions[auctionId].endTime,
+            "The auction has still not ended!"
+        );
+
+        if (auctions[auctionId].price > 0) {
+            payable(auctions[auctionId].auctionCreator).transfer(
+                auctions[auctionId].price
+            );
+        }
+
+        delete auctions[auctionId];
+    }
+
+    // (4) A function for users to withdraw their available funds.
+    function withdraw () public {
+        require(availableToWithdrawal[msg.sender] >0, "There is no money available to withdraw!");
+        uint availableToWithdraw = availableToWithdrawal[msg.sender];
+        availableToWithdrawal[msg.sender] = 0;
+        payable(msg.sender).transfer(availableToWithdraw);        
+    }
+
     // MODIFIERS
     // (5) A modifier used to check if the auction is active. 
     modifier onlyActiveAuction (uint256 index) {
