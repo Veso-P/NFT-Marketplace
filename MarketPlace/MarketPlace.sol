@@ -11,7 +11,7 @@ contract MarketPlace {
 
 /// Events:
     event NewCampaign(
-        uint256 identifier,
+        uint256 indexed identifier,
         address creator,
         string name        
     );
